@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearioTasks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-list-check"></i>ClearioTasks</h1>
+            <div class="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <label class="switch">
+                    <input type="checkbox" id="theme-switch">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar-menu">
+                    <button class="active" id="all-tasks"><i class="fas fa-inbox"></i> All Tasks</button>
+                    <button id="today-tasks"><i class="fas fa-calendar-day"></i> Today</button>
+                    <button id="important-tasks"><i class="fas fa-star"></i> Important</button>
+                </div>
+                
+                <div class="categories">
+                    <h3>Categories</h3>
+                    <ul id="categories-list">
+                        <!-- Categories will be added here dynamically -->
+                    </ul>
+                    <div class="add-category">
+                        <input type="text" id="new-category" placeholder="Add new category">
+                        <button id="add-category-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="task-view">
+                <div class="task-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="task-search" placeholder="Search tasks...">
+                    </div>
+                    <button id="add-task-btn" class="primary-btn">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+
+                <div class="task-filters">
+                    <select id="filter-category">
+                        <option value="all">All Categories</option>
+                    </select>
+                    <select id="filter-status">
+                        <option value="all">All Statuses</option>
+                        <option value="completed">Completed</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                    <select id="filter-priority">
+                        <option value="all">All Priorities</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <div class="task-stats">
+                    <div class="stat-card">
+                        <h4>Total Tasks</h4>
+                        <p id="total-tasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Completed</h4>
+                        <p id="completed-tasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Pending</h4>
+                        <p id="pending-tasks">0</p>
+                    </div>
+                </div>
+
+                <div class="tasks-container">
+                    <ul id="tasks-list">
+                        <!-- Tasks will be added here dynamically -->
+                    </ul>
+                </div>
+            </main>
+        </div>
+
+        <!-- Task Modal -->
+        <div class="modal" id="task-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="modal-title">Add New Task</h2>
+                <form id="task-form">
+                    <input type="hidden" id="task-id">
+                    <div class="form-group">
+                        <label for="task-title">Title</label>
+                        <input type="text" id="task-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description">Description</label>
+                        <textarea id="task-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="task-due-date">Due Date</label>
+                            <input type="date" id="task-due-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-priority">Priority</label>
+                            <select id="task-priority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="task-category">Category</label>
+                            <select id="task-category">
+                                <option value="uncategorized">Uncategorized</option>
+                            </select>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="task-important">
+                            <label for="task-important">Important</label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="secondary-btn" id="cancel-task">Cancel</button>
+                        <button type="submit" class="primary-btn">Save Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
